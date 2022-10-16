@@ -168,6 +168,9 @@ function RemoveStudent(index) {
     StudentList.splice(index,1);
     StudentList = StudentList;
     console.log(StudentList); 
+    
+    // to remove the element from dom
+      document.getElementsByClassName('d-flex')[index].innerHTML = '';
 
     localStorage.setItem("StudentList",JSON.stringify(StudentList));
     
