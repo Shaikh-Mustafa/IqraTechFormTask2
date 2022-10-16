@@ -1,0 +1,24 @@
+.MainContainer{
+    margin : 40px;
+}
+
+body{
+    position: relative;
+}
+
+#singleStudent{
+    position: absolute;
+    top: -19px;
+    right: 30px;
+    height: 600px;
+    width: 572px;
+}
+
+#StudentPhoto{
+    width: 464px;
+    margin-left: 10%;
+}
+
+.labelDiv h5{
+    margin-top : 10px;
+}
