@@ -59,49 +59,68 @@ const Gender = document.getElementById("Gender");
 const DateOfBirth = document.getElementById("DateOfBirth");
 
 function AddToList() {
-  // creating the object first..
-  Student = {
-    studentImage: StudentImageURL,
-    firstname: firstname.value,
-    lastname: lastname.value,
-    email: email.value,
-    dob: DOB.value,
-    Class: ClassName.value,
-    fathername: fathername.value,
-    phone: phone.value,
-    cgpa: cgpa.value,
-    roll: roll.value,
-    gender: gender,
-    skills: SkillsArray,
-    despcription: dis.value,
-  };
+  if(
+    StudentImage.value != '' &&
+    firstname.value.value != '' &&
+    fathername.value != '' &&
+    StudentPhotoUploaded &&
+    lName.value != '' && 
+    Percent.value != '' &&
+    Roll.value != '' &&
+    Class.value != '' &&
+    Gender.value != '' &&
+    DateOfBirth.value != ''
+  )
+  {
+ // creating the object first..
+ Student = {
+  studentImage: StudentImageURL,
+  firstname: firstname.value,
+  lastname: lastname.value,
+  email: email.value,
+  dob: DOB.value,
+  Class: ClassName.value,
+  fathername: fathername.value,
+  phone: phone.value,
+  cgpa: cgpa.value,
+  roll: roll.value,
+  gender: gender,
+  skills: SkillsArray,
+  despcription: dis.value,
+};
 
-  // pushing these object to the array.
+// pushing these object to the array.
 
-  StudentList.push(Student);
+StudentList.push(Student);
 
-  console.log(StudentList);
+console.log(StudentList);
 
-  // this div will hold student records..
-  const StudentDisplay = document.getElementById("StudentListContainer");
+// this div will hold student records..
+const StudentDisplay = document.getElementById("StudentListContainer");
 
-  var record = document.createElement("div");
+var record = document.createElement("div");
 
-  StudentList.forEach((element, index) => {
-    record.innerHTML = `
-    <div class="d-flex">
-    <h5 style="width : 250px; margin-left : 20px; margin-top : 15px">
-    <span style="margin-right : 20px">${index + 1}</span>
-    ${Student.firstname} ${Student.lastname}</h5>
-    
-    <button class="btn btn-primary m-1" onclick="ViewStudent(${index})">View</button>
-    <button class="btn btn-danger m-1" onclick="RemoveStudent(${index})">Remove</button>
-    </div>
-    `;
-  });
+StudentList.forEach((element, index) => {
+  record.innerHTML = `
+  <div class="d-flex">
+  <h5 style="width : 250px; margin-left : 20px; margin-top : 15px">
+  <span style="margin-right : 20px">${index + 1}</span>
+  ${Student.firstname} ${Student.lastname}</h5>
+  
+  <button class="btn btn-primary m-1" onclick="ViewStudent(${index})">View</button>
+  <button class="btn btn-danger m-1" onclick="RemoveStudent(${index})">Remove</button>
+  </div>
+  `;
+});
 
-  // appending these html inside StudentDisplay Area...
-  StudentDisplay.appendChild(record);
+// appending these html inside StudentDisplay Area...
+StudentDisplay.appendChild(record);
+  }
+
+  else{
+    alert("please Fill all the details!!!")
+  }
+ 
 
   // console.log(StudentImage.value);
   // console.log(firstname.value);
@@ -121,6 +140,7 @@ function AddToList() {
   // console.log(CSharp.checked);
   // console.log(dis.value);
 }
+
 
 function SetGender(e) {
   console.log(e.target.value);
@@ -170,7 +190,7 @@ function RemoveStudent(index) {
     console.log(StudentList); 
     
     // to remove the element from dom
-      document.getElementsByClassName('d-flex')[index].innerHTML = '';
+      document.getElementsByClassName('d-flex').splice(index,1);
 
     localStorage.setItem("StudentList",JSON.stringify(StudentList));
     
