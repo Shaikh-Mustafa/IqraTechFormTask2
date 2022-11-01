@@ -7,6 +7,7 @@ var StudentList = [];
     StudentList = [];
     console.log("NO Old Data Found");
 
+StudentPhotoUploaded = false;
 
 
 SkillsArray = [];
@@ -152,6 +153,7 @@ function SetImage(e) {
   StudentImageURL = URL.createObjectURL(file);
   console.log(e.target.files[0]);
   console.log(StudentImageURL);
+    StudentPhotoUploaded = true;
 }
 
 function SetSkills(event) {
